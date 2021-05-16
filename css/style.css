@@ -40,11 +40,13 @@ header > h1 {
 
 #mainPanel {
   float: right;
-  width: 85%;
+  width: 80%;
   box-sizing: border-box;
   padding: 25px;
   position: relative;
   height: 435px;
+
+  border-right: solid 3px #021825;
 }
 
 #choiceTable {
@@ -68,6 +70,8 @@ header > h1 {
   max-height: 100%;
 
   margin: auto;
+
+  cursor: pointer;
   
 }
 
@@ -82,24 +86,30 @@ header > h1 {
 
 #sideResultsPanel {
   float: left;
-  width: 15%;
+  width: 20%;
   height: 435px;
 
   box-sizing: border-box;
-  padding: 25px;
+  padding-left: 25px;
+
+  border-left: solid 3px #021825;
 }
 
 #sideResultsPanel h3 {
   font-size: 26px;
+  padding: 25px;
 }
 
 #sideResultsPanel ul {
   overflow: auto;
-  height: 358px;
+  height: 270px;
+  padding: 0 18px;
+
 }
 
 #sideResultsPanel li {
   list-style-type: circle;
+  padding: 6px 0;
 }
 
 
