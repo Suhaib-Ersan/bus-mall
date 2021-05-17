@@ -2,7 +2,6 @@ body * {
   /* border: 1px red solid; */
 }
 
-
 body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif, sans-serif;
   margin: 25px;
@@ -20,8 +19,7 @@ header {
   border-radius: 25px 25px 0 0;
 }
 
-#headerLogo 
-{
+#headerLogo {
   height: 100px;
   opacity: 88%;
   margin: auto;
@@ -41,18 +39,18 @@ header > h1 {
 
   opacity: 88%;
   color: #e4f5ff;
-  
 }
 
 #mainPanel {
   float: right;
-  width: 80%;
+  width: 100%;
   box-sizing: border-box;
   padding: 25px;
   position: relative;
   height: 435px;
 
   border-right: solid 3px #021825;
+  border-left: solid 3px #021825;
 }
 
 #choiceTable {
@@ -66,7 +64,6 @@ header > h1 {
 
   padding: 25px;
   box-sizing: border-box;
-
 }
 
 #choiceTable img {
@@ -78,52 +75,165 @@ header > h1 {
   margin: auto;
 
   cursor: pointer;
+}
+
+#articleDiv {
+  /* padding: 25px; */
+  display: flex;
+  align-items: center;
+  justify-content:space-around
+}
+
+#articleDiv  {
+  margin: 25px;
+}
+
+#articleDiv > article {
+  /* width: 80%; */
+}
+
+
+#canvasesContainer {
+  /* clear: both; */
+  box-sizing: border-box;
+  width: 100%;
+  /* margin: auto; */
+  border-left: solid 3px #021825;
+  border-right: solid 3px #021825;
+  background-color: rgb(233, 245, 255);
+  
+  display: flex;
+  justify-content:space-around;
+
+  transition: 1s;
+}
+
+#canvasesContainer * {
+
+ 
+}
+
+#myChartContainer {
+  /* border: red solid 1px; */
+  position: relative;
+  width: 100%;
+  height: 435px;
+
+  padding: 50px;
+
+  overflow: auto;
+
+}
+
+#myChart, #myChartTwo {
+
+  /* margin: 25px;
+  width: 600px;
+  height: 400px; */
+  /* height: 300px; */
+  /* background-color: #021825; */
   
 }
 
 
-#articleDiv {
-  position:absolute;
-  bottom: 0; 
 
-  padding: 25px;
-  box-sizing: border-box;
+#articleDiv h3 {
+  font-size: 22px;
+  padding: 10px;
+  text-align: center;
 }
+
+
+#showResultsButton {
+  padding: 15px 30px;
+  margin: 0 25px 10px 25px;
+
+  cursor: pointer;
+
+  border: none;
+  border-radius: 500px;
+  background-color: rgb(224, 54, 68);
+
+  white-space: nowrap;
+  color: white;
+  font-size: 22px;
+  font-weight: bolder;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  transition: 0.3s;
+}
+
+#showResultsButton:disabled {
+  cursor:auto;
+
+ background-color: rgb(212, 94, 104);
+
+ color: rgba(255, 255, 255, 0.5);
+ opacity: 50%;
+ transition: 0.3s;
+}
+
+
+#buttonAndResultsDiv {
+  display: flex;
+  justify-content:space-around;
+  flex-direction: column;
+  padding: 5px;
+
+  max-height: min-content;
+
+}
+
+
 
 #sideResultsPanel {
   float: left;
-  width: 20%;
+  min-width: 25%;
+  width: max-content;
+  max-width: 35%;
   height: 435px;
 
   box-sizing: border-box;
   padding-left: 25px;
-
-  border-left: solid 3px #021825;
 }
 
 #sideResultsPanel h3 {
   font-size: 26px;
   padding: 25px;
+  text-align: center;
 }
+
+#ulResultsCard {
+  height: 340px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
 
 #sideResultsPanel ul {
-  overflow: auto;
-  height: 270px;
-  padding: 0 18px;
+  position: relative;
+  top: 15px;
 
+  overflow: auto;
+  height: 300px;
+  padding: 5px 18px;
+  /* background-color: #67b2dd; */
+  
 }
+
 
 #sideResultsPanel li {
   list-style-type: circle;
-  padding: 6px 0;
+  list-style-position: inside;
+  padding: 6px;
+
 }
-
-
-
-
-
-
-
+/* #sideResultsPanel ul :first-child {
+  padding-top: 30px;
+}
+#sideResultsPanel ul :last-child {
+  padding-bottom: 30px;
+} */
 
 footer {
   clear: both;
