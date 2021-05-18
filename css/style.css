@@ -125,16 +125,30 @@ header > h1 {
 
 }
 
-#myChart, #myChartTwo {
+#resetChartButton {
+  padding: 15px 30px;
+  margin: 0 25px 10px 25px;
 
-  /* margin: 25px;
-  width: 600px;
-  height: 400px; */
-  /* height: 300px; */
-  /* background-color: #021825; */
-  
+  cursor: pointer;
+
+  border: none;
+  border-radius: 500px;
+  background-color: rgb(224, 54, 68);
+
+  white-space: nowrap;
+  color: white;
+  font-size: 22px;
+  font-weight: bolder;
+
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  transition: 0.3s;
+
+  position: relative;
+
+  top: 50px;
+  left: 30px;
 }
-
 
 
 #articleDiv h3 {
@@ -196,6 +210,7 @@ header > h1 {
 
   box-sizing: border-box;
   padding-left: 25px;
+
 }
 
 #sideResultsPanel h3 {
