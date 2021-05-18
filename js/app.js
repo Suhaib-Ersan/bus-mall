@@ -8,6 +8,7 @@ let assets = ["bag.jpg", "banana.jpg", "bathroom.jpg", "boots.jpg", "breakfast.j
 
 let choicesArray = [];
 let picNamesArray = [];
+
 let clicksDataArray = [];
 let viewsDataArray = [];
 
@@ -67,7 +68,6 @@ function renderImages() {
   futureimg2 = currentimg2;
   futureimg3 = currentimg3;
 
-
   img1El.setAttribute("src", choicesArray[currentimg1].assetPath);
   img1El.setAttribute("title", choicesArray[currentimg1].assetPath);
   choicesArray[currentimg1].views++;
@@ -104,6 +104,7 @@ function imageClickFunction(event) {
     }
     renderImages();
   } else {
+    // this will stop the choice game and then render the charts
     if (event.target.id === "img1") {
       choicesArray[currentimg1].clicks++;
     } else if (event.target.id === "img2") {
@@ -120,14 +121,35 @@ function imageClickFunction(event) {
 
     for (let i = 0; i < choicesArray.length; i++) {
 
-      clicksDataArray.push(choicesArray[i].clicks);
-      viewsDataArray.push(choicesArray[i].views);
       
+
+      if (clicksDataArray[i] !== undefined) {
+        // console.log(`clicksDataArray${i} before if = `+clicksDataArray[i]);
+        clicksDataArray[i] += (choicesArray[i].clicks);
+        // console.log(`clicksDataArray${i} after if = `+clicksDataArray[i]);
+      } else {
+        clicksDataArray.push(choicesArray[i].clicks);
+      }
+
+      // console.log(`clicksDataArray${i} after if and else = `+clicksDataArray[i]);
+
+      if (viewsDataArray[i] !== undefined) {
+        viewsDataArray[i] += (choicesArray[i].views);
+      } else {
+        viewsDataArray.push(choicesArray[i].views);
+      }
+
       
     }
 
+    let stringClicksDataArray = JSON.stringify(clicksDataArray);
+    localStorage.setItem("user Clicks Data", stringClicksDataArray);
+
+    let stringViewsDataArray = JSON.stringify(viewsDataArray);
+    localStorage.setItem("user views Data", stringViewsDataArray);
   }
 }
+
 
 function showResultsPanel() {
   let canvasHtmlVar = '<div id="sideResultsPanel"><h3>Result</h3><div id="ulResultsCard"><ul id="resultsUl"></ul></div></div><div id="myChartContainer"><canvas id="myChart"></canvas></div>';
@@ -143,6 +165,9 @@ function showResultsPanel() {
     resultsUlEl.appendChild(resultsLlEl);
     resultsLlEl.textContent = `${choicesArray[i].picName} had ${choicesArray[i].clicks} votes, and was seen ${choicesArray[i].views} times.`;
   }
+
+  showResultsButtonEl.removeEventListener("click", showResultsPanel);
+
 
   var ctx = document.getElementById("myChart").getContext("2d");
   var myChart = new Chart(ctx, {
@@ -167,19 +192,15 @@ function showResultsPanel() {
       ],
     },
     options: {
-
       maintainAspectRatio: false,
 
       scales: {
-        x: {
-          
-        },
+        x: {},
         y: {
-          
           ticks: {
             // forces step size to be 50 units
-            stepSize: 1
-          }, 
+            stepSize: 1,
+          },
           //   gridLines: {
           //   color: "transparent",
           //   display: true,
@@ -187,9 +208,8 @@ function showResultsPanel() {
           //   zeroLineColor: "#ccc",
           //   zeroLineWidth: 1
           // }
-        }
-        
-      }
+        },
+      },
       // scales: {
 
       //   y: {
@@ -201,3 +221,20 @@ function showResultsPanel() {
     },
   });
 }
+
+let strCkiGetClicksDataArray = localStorage.getItem("user Clicks Data");
+let strCkiGetViewsDataArray = localStorage.getItem("user views Data");
+
+let nrmlCkiGetClicksDataArray = JSON.parse(strCkiGetClicksDataArray);
+let nrmlCkiGetViewsDataArray = JSON.parse(strCkiGetViewsDataArray);
+
+if (nrmlCkiGetClicksDataArray !== null) {
+  clicksDataArray = nrmlCkiGetClicksDataArray;
+}
+if (nrmlCkiGetViewsDataArray !== null) {
+  viewsDataArray = nrmlCkiGetViewsDataArray;
+}
+
+// if (cookieRetrieve !== null) {
+// userData = cookieRetrieve;
+// }
